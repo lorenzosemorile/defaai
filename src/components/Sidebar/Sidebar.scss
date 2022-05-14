@@ -1,0 +1,44 @@
+.sidebar {
+  @apply flex h-screen flex-col py-6 justify-between relative;
+  margin: 0 20px;
+  width: 80px;
+
+  &:after {
+    content: "";
+    border-right: 1px solid #eee;
+    height: 90vh;
+    position: absolute;
+    left: calc(100% + 20px);
+  }
+
+  &__top {
+    @apply flex flex-col space-y-16 items-center;
+  }
+
+  &__bottom {
+    @apply flex flex-col items-center;
+  }
+
+  &__icon {
+
+    width: 60px;
+    height: 60px;
+    padding: 24px;
+
+    @apply flex justify-center items-center;
+
+    img {
+      max-width: 46px;
+      max-height: 46px;
+    }
+  }
+
+  &__icon--avatar img {
+    @apply object-contain
+  }
+
+
+  &__icon--active {
+    @apply bg-light-blue rounded-2xl;
+  }
+}

@@ -1,0 +1,21 @@
+.accordion {
+  @apply p-4 -mx-4 rounded divide-y divide-y-reverse divide-gray-light;
+
+  &__content{
+    @apply transition-all duration-500 ease-in-out hidden;
+  }
+
+  &.opened {
+    @apply divide-none bg-light-blue;
+    .caret {
+      @apply rotate-180;
+    }
+    .accordion__content{
+      @apply h-auto block;
+    }
+  }
+
+  &__heading{
+    @apply flex justify-between items-center py-2;
+  }
+}

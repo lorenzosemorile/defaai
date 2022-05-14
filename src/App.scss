@@ -1,0 +1,39 @@
+input {
+  @apply p-2;
+}
+
+.button {
+  @apply  px-5 py-2 rounded font-medium;
+
+  &--cancel {
+    @apply bg-gray-light text-gray;
+  }
+
+  &--save {
+    @apply bg-green text-white;
+  }
+
+  &--alignment {
+    @apply bg-gray-light text-gray;
+  }
+
+  &--listen {
+    @apply bg-gray-light text-gray text-xs;
+  }
+
+  &--plan {
+    @apply bg-light-blue text-blue text-sm font-bold;
+  }
+
+  &--preview {
+    @apply bg-light-blue text-blue text-sm font-bold;
+  }
+
+  &--plan--active {
+    @apply bg-opacity-0 text-green-dark;
+  }
+}
+
+main {
+  @apply py-6
+}

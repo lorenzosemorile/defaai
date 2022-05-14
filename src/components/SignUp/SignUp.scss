@@ -1,0 +1,40 @@
+.signup{
+
+  @apply justify-center text-sm text-black;
+  width: 50vw;
+  margin-left: 25vw;
+  position: absolute;
+  top: 140px;
+  left: 0;
+
+  &__form {
+    @apply flex flex-col text-black items-center;
+  }
+
+  &__input {
+    @apply flex flex-col space-y-1 py-4;
+
+    label {
+      @apply text-sm
+    }
+    input {
+      @apply focus:outline-none border border-gray rounded;
+    }
+  }
+
+  &__button {
+    @apply py-4;
+  }
+
+  &__signup {
+
+    a{
+      @apply text-blue;
+    }
+
+  }
+
+  &__logo {
+    @apply fixed right-0 top-0;
+  }
+}

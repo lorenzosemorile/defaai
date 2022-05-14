@@ -1,0 +1,11 @@
+.toolbox {
+  @apply flex w-1/2 flex-col;
+
+  &__list {
+    @apply flex justify-items-start space-x-4 py-5;
+  }
+
+  &__list__item--active {
+    @apply text-blue;
+  }
+}

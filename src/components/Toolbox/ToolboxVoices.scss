@@ -1,0 +1,38 @@
+.toolbox__voices {
+  @apply flex flex-col gap-y-4 ;
+
+  .toolbox__voice {
+    @apply flex p-2 rounded bg-gray-light justify-center w-2/3 gap-x-2 transition-all duration-500 hover:bg-light-blue cursor-pointer;
+  }
+
+  .toolbox__voice.active {
+    @apply bg-light-blue outline outline-1 outline-blue;
+  }
+
+  .button--play {
+
+    @apply text-white bg-blue rounded-full text-sm p-2 text-center inline-flex items-center;
+    padding: 20px;
+    img {
+      height: 19px;
+      width: 19px;
+    }
+  }
+
+
+}
+
+.sample {
+
+  @apply relative;
+
+  &__title {
+    @apply text-2xs text-gray-dark;
+  }
+
+  &__percentage{
+    @apply absolute right-1 top-1 text-2xs
+  }
+
+
+}

@@ -1,0 +1,24 @@
+.toolbox__actors{
+  @apply grid grid-cols-3 gap-4;
+
+  .actor__label {
+    @apply flex text-2xs justify-center;
+  }
+
+  .actor {
+    img {
+      @apply w-full;
+    }
+  }
+
+  .actor--active{
+    img {
+      @apply outline outline-1 outline-blue;
+    }
+
+    .actor__label {
+      @apply text-blue;
+    }
+
+  }
+}

@@ -1,0 +1,7 @@
+.toolbox__background {
+  &__container.toolbox--images{
+
+    @apply grid grid-cols-3 gap-4;
+
+  }
+}

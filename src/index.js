@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter} from "react-router-dom";
+import {ProfileProvider} from "./context/Profile/ProfileProvider";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ProfileProvider>
+        <div className="app flex pr-5 gap-x-5">
+          <App />
+        </div>
+      </ProfileProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

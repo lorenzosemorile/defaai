@@ -1,0 +1,28 @@
+.preview {
+  @apply flex flex-col w-1/2;
+
+  &__image {
+    @apply flex bg-gray-light p-4 rounded-2xl gap-y-4 relative;
+
+    img {
+      @apply w-full;
+    }
+
+    .button--preview{
+      @apply absolute bottom-8 left-1/2 transform -translate-x-16 w-32;
+    }
+  }
+
+  &__description {
+    @apply bg-white p-4 rounded-2xl relative;
+  }
+
+  &__textarea {
+    @apply w-full focus:outline-none resize-none text-gray;
+  }
+
+  &__counter {
+    @apply absolute bottom-4 right-4 text-xs text-gray;
+  }
+
+}

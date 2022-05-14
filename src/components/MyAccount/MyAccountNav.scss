@@ -1,0 +1,13 @@
+.myaccount-nav {
+  ul {
+    @apply flex space-x-6;
+
+    li {
+      @apply transition-all duration-500 hover:text-blue;
+    }
+
+    li.active {
+      @apply text-blue;
+    }
+  }
+}

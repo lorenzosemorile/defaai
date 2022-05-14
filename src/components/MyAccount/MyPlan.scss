@@ -1,0 +1,45 @@
+.myplan {
+  @apply flex space-x-8 py-12;
+
+
+}
+
+.plan {
+
+  width: 240px;
+  @apply p-6 flex flex-col space-y-4 rounded-lg transition-all duration-500 hover:bg-gray-light cursor-pointer;
+
+  &.active {
+    @apply bg-green text-white -mt-8;
+  }
+
+  h3{
+    @apply font-bold text-xl text-black;
+  }
+
+  ul {
+    @apply flex flex-col gap-y-4;
+    li {
+      @apply flex space-x-5 items-start text-2xs;
+      img {
+        @apply mt-2
+      }
+    }
+  }
+
+  &__price {
+    @apply font-bold;
+  }
+
+  &__price__currency{
+    @apply text-2xs;
+  }
+
+  &__price__amount{
+    @apply text-2xl;
+  }
+
+
+}
+
+

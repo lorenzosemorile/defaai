@@ -1,0 +1,44 @@
+.header {
+  @apply flex h-20 items-center relative ;
+  &:after{
+    content: "";
+    @apply flex absolute border-b border-gray-light;
+    width: 96%;
+    top: 100%;
+    transform: translateX(2%);
+  }
+
+  &__input {
+    @apply flex w-2/5 font-bold text-2xl gap-x-4;
+  }
+  &__input__text{
+    @apply  focus:outline-none focus:border-b-2 focus:border-b-gray-light z-10 font-bold text-2xl;
+  }
+
+  &__actions {
+    @apply  flex w-3/5 justify-end space-x-3 text-sm;
+  }
+
+  .caret {
+    @apply flex
+  }
+
+  .settings {
+    @apply  flex flex-col absolute text-2xs top-12 left-0 gap-y-4;
+
+    textarea {
+      @apply focus:outline-none border-b-2 border-gray-light opacity-75 resize-none;
+    }
+
+    .button {
+      @apply text-base;
+    }
+
+    .settings__tags {
+      @apply  flex justify-center gap-x-2;
+      .button {
+        @apply text-2xs border border-gray-dark;
+      }
+    }
+  }
+}

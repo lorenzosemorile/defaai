@@ -1,0 +1,21 @@
+.video-list {
+  @apply grid grid-cols-5 gap-4;
+}
+
+.video-card {
+  @apply flex flex-col justify-center items-center gap-y-2 p-2 bg-gray-light rounded-lg relative;
+
+  img {
+    @apply aspect-video;
+  }
+
+}
+
+.more-menu {
+  @apply absolute top-5 right-5;
+
+  img {
+    @apply w-6 h-2;
+  }
+}
+

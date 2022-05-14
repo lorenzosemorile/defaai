@@ -1,0 +1,10 @@
+.toolbox__alignment {
+  @apply flex gap-x-5;
+
+  .button--alignment{
+    @apply w-40 transition-all hover:bg-light-blue;
+  }
+  .button--alignment.active{
+    @apply w-40 bg-light-blue outline outline-1 outline-blue text-blue;
+  }
+}
