@@ -73,15 +73,16 @@ export const MyProfile = () => {
             id="firstname"
             name="firstname"
             type="text"
-            placeholder={profileContext.firstName} />
+            defaultValue={profileContext.firstName}
+           />
         </div>
         <div className="profile__input">
           <label for="lastname">Last Name</label>
-          <input id="lastname" type="text" name="lastname" placeholder={profileContext.lastName}/>
+          <input id="lastname" type="text" name="lastname" defaultValue={profileContext.lastName}/>
         </div>
         <div className="profile__input">
           <label for="email">E-mail</label>
-          <input id="email" type="email" name="email" placeholder={profileContext.email}/>
+          <input id="email" type="email" name="email" defaultValue={profileContext.email}/>
         </div>
         <div className="profile__button">
           <button type="submit" className="button button--save">Save Changes</button>

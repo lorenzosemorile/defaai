@@ -1,7 +1,7 @@
 import './SignIn.scss';
 import {Link, useNavigate} from "react-router-dom";
 import logo from '../../assets/img/bg-logo.svg';
-import {useContext, useRef} from "react";
+import {useContext, useRef, useState} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 import {checkLogin, CheckLogin} from "../../context/Profile/ProfileProvider";
 
@@ -10,6 +10,8 @@ export const SignIn = () => {
   const formRef = useRef();
   const profileContext = useContext(ProfileContext);
   const navigate = useNavigate();
+
+  const [error, setError] = useState(null);
 
   const checkLogin = (data) => {
     const response = {
@@ -45,6 +47,12 @@ export const SignIn = () => {
     if (response.RESP === 'OK'){
       profileContext.setLogged(true);
       navigate('/');
+    }else {
+      formRef.current.classList.add('animate__animated', 'animate__shakeX');
+      formRef.current.addEventListener('animationend', () => {
+        formRef.current.classList.remove('animate__animated', 'animate__shakeX');
+        setError(response.MSG);
+      });
     }
     console.log(response);
 
@@ -68,6 +76,9 @@ export const SignIn = () => {
           <button type="submit" className="button button--save">Login</button>
         </div>
         <div className="signin__signup">Now here? <Link to='/signup'>Signup</Link></div>
+        {error && (
+          <div className="signin__error  animate__animated animate__bounceIn">{error}</div>
+        )}
       </form>
       <div className="signin__logo"><img src={logo}/></div>
     </section>

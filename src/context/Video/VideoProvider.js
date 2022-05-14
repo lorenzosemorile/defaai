@@ -1,5 +1,5 @@
 import {VideoContext} from "./VideoContext";
-import {SET_TITLE, SET_DESCRIPTION, SET_SCRIPT, SET_ACTOR, ADD_VIDEO, SET_ALIGNMENT} from "./actions";
+import {SET_TITLE, SET_DESCRIPTION, SET_SCRIPT, SET_ACTOR, ADD_VIDEO, SET_ALIGNMENT, RESET} from "./actions";
 import {useReducer} from 'react';
 
 const defaultVideoState = {
@@ -26,6 +26,12 @@ const VideoReducer = (state, action) => {
       return {...state, actor: payload};
     case SET_ALIGNMENT:
       return {...state, alignment: payload};
+    case RESET:
+      console.log('RESET');
+      return {
+        ...state,
+        ...defaultVideoState
+      };
     case ADD_VIDEO:
       const video = {
         title: state.title,
@@ -71,6 +77,10 @@ export const VideoProvider = ({children}) => {
     dispatchVideoAction({type: ADD_VIDEO});
   }
 
+  const reset = () => {
+    dispatchVideoAction({type: RESET});
+  }
+
   const videoCtx = {
     title : videoState.title,
     description : videoState.description,
@@ -83,7 +93,8 @@ export const VideoProvider = ({children}) => {
     setScript: setScript,
     setActor: setActor,
     setAlignment: setAlignment,
-    addVideo: addVideo
+    addVideo: addVideo,
+    reset: reset
   }
 
   return (

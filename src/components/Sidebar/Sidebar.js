@@ -64,9 +64,11 @@ export const Sidebar = () => {
       {profileContext.isLogged && (
         <div className="sidebar__bottom">
           <div className={`sidebar__icon sidebar__icon--avatar${checkActive('/profile')}`}>
-            <Link to="/profile">
-              <img src={profileContext.image} alt="avatar"/>
-            </Link>
+            <div className="rounded-full">
+              <Link to="/profile">
+                <img src={profileContext.image} alt="avatar"/>
+              </Link>
+            </div>
           </div>
         </div>
       )}

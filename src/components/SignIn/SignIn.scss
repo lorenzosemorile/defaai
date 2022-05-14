@@ -34,6 +34,10 @@
 
   }
 
+  &__error {
+    @apply mt-4 text-red;
+  }
+
   &__logo {
     @apply fixed right-0 top-0;
   }

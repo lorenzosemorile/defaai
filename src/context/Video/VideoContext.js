@@ -16,7 +16,8 @@ const defaultVideoContext = {
   setVoice: (voice) => {},
   setBackground : (background) => {},
   setActor : (actor) => {},
-  addVideo: () => {}
+  addVideo: () => {},
+  reset: () => {}
 }
 export const VideoContext = createContext(defaultVideoContext);
 

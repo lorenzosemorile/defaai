@@ -1,5 +1,6 @@
 input {
   @apply p-2;
+  width: 360px;
 }
 
 .button {
@@ -27,6 +28,10 @@ input {
 
   &--preview {
     @apply bg-light-blue text-blue text-sm font-bold;
+  }
+
+  &--logout {
+    @apply text-red text-sm;
   }
 
   &--plan--active {

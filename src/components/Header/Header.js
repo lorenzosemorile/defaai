@@ -4,6 +4,7 @@ import {Overlay} from "../Overlay/Overlay";
 import {useContext, useEffect, useRef, useState} from "react";
 import {VideoContext} from "../../context/Video/VideoContext";
 import {useNavigate} from 'react-router-dom';
+import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 export const Header = () => {
 
@@ -25,14 +26,14 @@ export const Header = () => {
   }
 
   const cancelVideoHandle = () => {
-    navigate('/myvideos');
+    videoContext.reset();
   }
 
   const renderSettingsForm = () => {
     if (!filling) return;
     return (
       <div className="settings">
-        <textarea ref={textareaRef} rows="2" defaultValue={videoContext.description}></textarea>
+        <textarea ref={textareaRef} rows="2" defaultValue={videoContext.description} />
         <button className="button button--save" onClick={saveInfoHandle} >Save</button>
         <div className="settings__tags">
           <button className="button">Marketing</button>
@@ -52,7 +53,7 @@ export const Header = () => {
           <input
             ref={inputRef}
             className="header__input__text"
-            placeholder={videoContext.title}
+            defaultValue={videoContext.title}
             onFocus={() => setFilling(true)}/>
           {renderSettingsForm()}
         </div>
@@ -67,7 +68,32 @@ export const Header = () => {
   )
 }
 
-export const HeaderStatic = ({title, children}) => {
+export const HeaderStatic = ({title, button, children}) => {
+
+  const profileContext = useContext(ProfileContext);
+  const navigate = useNavigate();
+
+  const logoutClickHandle = () => {
+    profileContext.setLogged(false);
+  }
+
+  const newClickHandle = () => {
+    navigate('/');
+  }
+
+  const renderButton = () => {
+    if (!button) return;
+    switch (button){
+      case 'logout':
+        return (
+          <button className="button button--logout" onClick={logoutClickHandle}>Logout</button>
+        )
+      case 'newvideo':
+        return (
+          <button className="button button--save" onClick={newClickHandle}>Create New</button>
+        )
+    }
+  }
 
   return (
     <header className="header">
@@ -75,7 +101,7 @@ export const HeaderStatic = ({title, children}) => {
         <span>{title}</span>
       </div>
       <div className="header__actions">
-        <button className="button button--save">Create New</button>
+        {renderButton()}
       </div>
     </header>
   )

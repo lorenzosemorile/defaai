@@ -13,7 +13,10 @@
 
   &__top {
     @apply flex flex-col space-y-16 items-center;
+
   }
+
+
 
   &__bottom {
     @apply flex flex-col items-center;
@@ -33,12 +36,14 @@
     }
   }
 
-  &__icon--avatar img {
-    @apply object-contain
-  }
-
-
-  &__icon--active {
+  &__top &__icon--active {
     @apply bg-light-blue rounded-2xl;
   }
+
+  &__icon--avatar img {
+    @apply object-contain rounded-full;
+    width: 60px;
+    height: 60px;
+  }
+
 }
