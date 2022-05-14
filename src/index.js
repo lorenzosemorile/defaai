@@ -11,7 +11,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ProfileProvider>
-        <div className="app flex pr-5 gap-x-5">
+        <div className="app flex pr-10 gap-x-10">
           <App />
         </div>
       </ProfileProvider>

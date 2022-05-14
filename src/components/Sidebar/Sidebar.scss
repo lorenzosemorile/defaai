@@ -36,6 +36,10 @@
     }
   }
 
+  &__top &__icon:not(:first-child) {
+    @apply transition-all hover:bg-light-blue rounded-2xl;
+  }
+
   &__top &__icon--active {
     @apply bg-light-blue rounded-2xl;
   }

@@ -6,7 +6,7 @@ export const Overlay = ({opened}) => {
   if (!opened) return null;
   return (
     ReactDOM.createPortal(
-      <div className={`overlay`}/>,
+      <div className={`overlay animate__animated animate__fadeIn`}/>,
       overlayElement
     )
   )

@@ -3,16 +3,23 @@
   &:after{
     content: "";
     @apply flex absolute border-b border-gray-light;
-    width: 96%;
+    width: 100%;
     top: 100%;
-    transform: translateX(2%);
+    transform: translateX(-1%);
   }
 
   &__input {
     @apply flex w-2/5 font-bold text-2xl gap-x-4;
   }
+
+
+
   &__input__text{
-    @apply  focus:outline-none focus:border-b-2 focus:border-b-gray-light z-10 font-bold text-2xl;
+    @apply  focus:outline-none focus:border-b-2 focus:border-b-gray-light z-10 font-medium text-2xl;
+  }
+
+  &__input.filling &__input__text{
+    @apply text-blue border-b border-b-light-blue;
   }
 
   &__actions {
@@ -24,7 +31,8 @@
   }
 
   .settings {
-    @apply  flex flex-col absolute text-2xs top-12 left-0 gap-y-4;
+    @apply  flex flex-col absolute text-2xs top-16 left-0 gap-y-4;
+    width: 680px;
 
     textarea {
       @apply focus:outline-none border-b-2 border-gray-light opacity-75 resize-none;
@@ -35,10 +43,14 @@
     }
 
     .settings__tags {
-      @apply  flex justify-center gap-x-2;
+      @apply  flex justify-start gap-x-2 ;
       .button {
-        @apply text-2xs border border-gray-dark;
+        @apply text-2xs border border-gray text-gray p-0 px-2 transition-all duration-500 hover:bg-light-blue;
       }
+    }
+
+    .button--save {
+      @apply text-sm;
     }
   }
 }

@@ -1,3 +1,19 @@
 .overlay {
-  @apply fixed w-full h-screen bg-white opacity-75 z-10;;
+  @apply fixed w-full h-screen bg-white opacity-90 z-10;
+
+  &.animate__fadeIn{
+    animation-name: fadeInOverlay;
+  }
+
+
+}
+
+@keyframes fadeInOverlay {
+  0% {
+    @apply  opacity-0
+  }
+
+  100% {
+    @apply opacity-90
+  }
 }

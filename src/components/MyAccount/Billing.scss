@@ -1,3 +1,14 @@
 .billing {
 
+  table {
+    @apply table-fixed text-left pt-8;
+
+    th {
+      @apply text-gray text-sm font-semibold;
+    }
+
+    th, td{
+      @apply px-10 py-2 first-of-type:pl-0 last-of-type:pr-0 text-base font-medium text-light-black;
+    }
+  }
 }

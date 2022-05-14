@@ -6,6 +6,33 @@ import {VideoContext} from "../../context/Video/VideoContext";
 import {useNavigate} from 'react-router-dom';
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 
+const defaultTags = [
+  {
+    id : 'email',
+    label : 'Email'
+  },
+  {
+    id : 'marketing',
+    label : 'Marketing'
+  },
+  {
+    id : 'greeting',
+    label : 'Greeting'
+  },
+  {
+    id : 'email',
+    label : 'Email'
+  },
+  {
+    id : 'marketing',
+    label : 'Marketing'
+  },
+  {
+    id : 'greeting',
+    label : 'Greeting'
+  },
+]
+
 export const Header = () => {
 
   const [filling, setFilling] = useState(false);
@@ -34,13 +61,19 @@ export const Header = () => {
     return (
       <div className="settings">
         <textarea ref={textareaRef} rows="2" defaultValue={videoContext.description} />
-        <button className="button button--save" onClick={saveInfoHandle} >Save</button>
         <div className="settings__tags">
-          <button className="button">Marketing</button>
-          <button className="button">Marketing</button>
-          <button className="button">Marketing</button>
-          <button className="button">Marketing</button>
-          <button className="button">Marketing</button>
+          {defaultTags.map(tag => {
+            return (
+              <button
+                key={tag.id}
+                className="button button--tag">
+                {tag.label}
+              </button>
+            )
+          })}
+        </div>
+        <div className="settings__save">
+          <button className="button button--save" onClick={saveInfoHandle} >Save</button>
         </div>
       </div>
     )
@@ -48,7 +81,7 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="header__input">
+      <div className={`header__input${filling ? ' filling' : ''}`}>
         <div className="z-10 relative">
           <input
             ref={inputRef}

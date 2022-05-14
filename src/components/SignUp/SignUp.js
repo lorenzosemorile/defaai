@@ -21,7 +21,13 @@ export const SignUp = () => {
       fullName, email, password
     });
 
-    navigate('/login');
+    formRef.current.classList.add('animate__animated', 'animate__flipOutX');
+    formRef.current.addEventListener('animationend', () => {
+      //formRef.current.classList.remove('animate__animated', 'animate__shakeX');
+      navigate('/login');
+    });
+
+
 
   }
 
