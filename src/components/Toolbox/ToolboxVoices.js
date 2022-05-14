@@ -5,7 +5,6 @@ import pause from '../../assets/img/pause.svg';
 import './ToolboxVoices.scss';
 import {Player} from "../Player/Player";
 import {useContext, useEffect, useRef, useState} from "react";
-import {Wave} from "./Wave";
 import {VideoContext} from "../../context/Video/VideoContext";
 const defaultVoices = [
   {
