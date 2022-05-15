@@ -137,6 +137,7 @@ export const HeaderStatic = ({title, button, children}) => {
         return (
           <button className="button button--logout" onClick={logoutClickHandle}>Logout</button>
         )
+
       case 'newvideo':
         return (
           <button className="button button--save" onClick={newClickHandle}>Create New</button>
