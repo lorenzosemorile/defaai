@@ -118,6 +118,7 @@ export const Header = () => {
 export const HeaderStatic = ({title, button, children}) => {
 
   const profileContext = useContext(ProfileContext);
+  const videoContext = useContext(VideoContext);
   const navigate = useNavigate();
 
   const logoutClickHandle = () => {
@@ -125,6 +126,7 @@ export const HeaderStatic = ({title, button, children}) => {
   }
 
   const newClickHandle = () => {
+    videoContext.reset();
     navigate('/');
   }
 

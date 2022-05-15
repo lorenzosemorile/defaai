@@ -12,12 +12,18 @@ export const MyAccount = () => {
     setContentActive(id);
   }
 
+  const onChangePlan = () => {
+    setTimeout(()=> {
+      setContentActive('billing');
+    }, 600)
+  }
+
   const renderContent = () => {
     switch (contentActive){
       case 'myprofile':
         return <MyProfile />
       case 'myplan':
-        return <MyPlan />
+        return <MyPlan onChangePlan={onChangePlan}/>
       case 'billing':
         return <Billing />
       default:
@@ -27,7 +33,7 @@ export const MyAccount = () => {
 
   return (
     <Fragment>
-      <MyAccountNav onActive={onActiveChange}/>
+      <MyAccountNav onActive={onActiveChange} activeId={contentActive}/>
       {renderContent()}
     </Fragment>
   )

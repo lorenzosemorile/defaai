@@ -1,5 +1,5 @@
 import './MyAccountNav.scss';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 const nav = [
   {
     id : 'myprofile',
@@ -15,7 +15,7 @@ const nav = [
   }
 ]
 
-export const MyAccountNav = ({onActive}) => {
+export const MyAccountNav = ({onActive, activeId}) => {
 
   const [activeTab, setActiveTab] = useState(nav[0]);
 
@@ -23,6 +23,11 @@ export const MyAccountNav = ({onActive}) => {
     setActiveTab(item);
     onActive(item.id);
   }
+
+  useEffect(() => {
+    const active = nav.find((n) => n.id === activeId ) || nav[0];
+    setActiveTab(active);
+  }, [activeId])
 
   return (
     <nav className="myaccount-nav">

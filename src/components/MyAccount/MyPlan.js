@@ -58,15 +58,13 @@ const plans = [
   }
 ]
 
-export const MyPlan = () => {
+export const MyPlan = ({onChangePlan}) => {
 
 
   const profileContext = useContext(ProfileContext);
   const [activePlan, setActivePlan] = useState(() => {
     return plans.find(plan => plan.id === profileContext.activePlanId)
   });
-
-
 
   return (
     <section className="myplan">
@@ -78,6 +76,7 @@ export const MyPlan = () => {
         }
         return (
           <Plan
+            onChangePlan={onChangePlan}
             onPlanSelected={setActivePlan}
             key={plan.id}
             data={plan}
@@ -90,7 +89,7 @@ export const MyPlan = () => {
   )
 }
 
-export const Plan = React.memo( ({data, active, label, onPlanSelected}) => {
+export const Plan = React.memo( ({data, active, label, onPlanSelected, onChangePlan}) => {
 
   const profileContext = useContext(ProfileContext);
 
@@ -104,6 +103,10 @@ export const Plan = React.memo( ({data, active, label, onPlanSelected}) => {
     console.log(bill);
     profileContext.addBill(bill);
     onPlanSelected(data);
+    onChangePlan();
+    setTimeout(() => {
+
+    }, 600);
   }
 
   const renderButton = () => {
