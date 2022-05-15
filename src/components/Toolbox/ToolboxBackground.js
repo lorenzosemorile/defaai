@@ -1,43 +1,13 @@
 import './ToolboxBackground.scss';
-import {useState} from "react";
+import {Fragment, useContext, useRef, useState} from "react";
 import {Accordion} from "../Accordion/Accordion";
-const defaultBackgrounds = [
-  {
-    id : '1',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/1.jpg')
-  },
-  {
-    id : '2',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/2.jpg')
-  },
-  {
-    id : '3',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/3.jpg')
-  },
-  {
-    id : '4',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/4.jpg')
-  },
-  {
-    id : '5',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/5.jpg')
-  },
-  {
-    id : '6',
-    label : 'Office',
-    src : require('../../assets/img/backgrounds/6.jpg')
-  },
-]
+import upload from '../../assets/img/upload.svg';
+import {VideoContext} from "../../context/Video/VideoContext";
+
 const accordions = [
   {
     id : 'images',
-    title : 'Images',
-    data : defaultBackgrounds
+    title : 'Images'
   },
   {
     id : 'solidcolours',
@@ -52,9 +22,12 @@ const accordions = [
 
 export const ToolboxBackground = () => {
 
- const activeAccordion = accordions[0];
+  const videoContext = useContext(VideoContext);
+  const backgrounds = videoContext.backgrounds;
+
+  const activeAccordion = accordions[0];
   return (
-    <section className="toolbox__backgorund">
+    <section className="toolbox__background">
       {accordions.map(accordion => {
         const active = (accordion.id === activeAccordion.id);
         return (
@@ -63,17 +36,49 @@ export const ToolboxBackground = () => {
             title={accordion.title}
             active={active}>
             <div className={`toolbox__background__container toolbox--${accordion.id}`}>
-              {accordion.data && accordion.data.map(img => {
-                return (
-                  <div key={img.id} className="toolbox__background__image">
-                    <img src={img.src} alt={img.label}/>
-                  </div>
-                )
-              })}
+              {(accordion.id === 'images') ? <Backgrounds backgrounds={backgrounds} /> : ''}
             </div>
           </Accordion>
         )
       })}
     </section>
+  )
+}
+
+const Backgrounds = ({backgrounds}) => {
+
+  const uploadRef = useRef();
+  const videoContext = useContext(VideoContext);
+  const [activeBackground, setActiveBackground] = useState(videoContext.background);
+
+  const uploadClickHandle = () => {
+    uploadRef.current.click();
+  }
+
+  const backgroundSelectHandle = (img) => {
+    setActiveBackground(img);
+    videoContext.setBackground(img);
+
+  }
+
+  return (
+    <Fragment>
+      <div className="toolbox__background__image toolbox__background__upload">
+        <button onClick={uploadClickHandle}>
+          <img src={upload} />
+        </button>
+        <input ref={uploadRef} type="file" hidden/>
+      </div>
+      {backgrounds.map(img => {
+        const active = img.id === activeBackground.id;
+        return (
+          <div key={img.id} className={`toolbox__background__image${active ? ' active' : ''}`}>
+            <button onClick={() => backgroundSelectHandle(img)}>
+              <img src={img.src} alt={img.label}/>
+            </button>
+          </div>
+        )
+      })}
+    </Fragment>
   )
 }

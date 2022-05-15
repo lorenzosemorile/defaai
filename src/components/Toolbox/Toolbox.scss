@@ -2,7 +2,10 @@
   @apply flex w-1/2 flex-col;
 
   &__list {
-    @apply flex justify-items-start space-x-4 py-5;
+    @apply flex justify-items-start space-x-4 py-5 text-gray;
+    button {
+      @apply font-medium
+    }
   }
 
   &__list__item--active {

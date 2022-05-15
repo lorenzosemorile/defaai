@@ -1,6 +1,48 @@
 import {VideoContext} from "./VideoContext";
-import {SET_TITLE, SET_DESCRIPTION, SET_SCRIPT, SET_ACTOR, ADD_VIDEO, SET_ALIGNMENT, RESET} from "./actions";
+import {
+  SET_TITLE,
+  SET_DESCRIPTION,
+  SET_SCRIPT,
+  SET_ACTOR,
+  ADD_VIDEO,
+  SET_ALIGNMENT,
+  RESET,
+  SET_BACKGROUND, ADD_BACKGROUND, SET_VOICE
+} from "./actions";
 import {useReducer} from 'react';
+
+const defaultBackgrounds = [
+  {
+    id : '1',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/1.jpg')
+  },
+  {
+    id : '2',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/2.jpg')
+  },
+  {
+    id : '3',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/3.jpg')
+  },
+  {
+    id : '4',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/4.jpg')
+  },
+  {
+    id : '5',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/5.jpg')
+  },
+  {
+    id : '6',
+    label : 'Office',
+    src : require('../../assets/img/backgrounds/6.jpg')
+  },
+]
 
 const defaultVideoState = {
   title : 'Say Hi to my costumer',
@@ -8,7 +50,10 @@ const defaultVideoState = {
   script : 'Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages',
   alignment : {},
   actor: {},
-  videos: []
+  voice: {},
+  videos: [],
+  background: {},
+  backgrounds: defaultBackgrounds
 };
 
 export const defaultScriptText = defaultVideoState.script;
@@ -24,6 +69,8 @@ const VideoReducer = (state, action) => {
       return {...state, script: payload};
     case SET_ACTOR:
       return {...state, actor: payload};
+    case SET_VOICE:
+      return {...state, voice: payload};
     case SET_ALIGNMENT:
       return {...state, alignment: payload};
     case RESET:
@@ -38,11 +85,19 @@ const VideoReducer = (state, action) => {
         description: state.description,
         actor: state.actor,
         script: state.script,
-        alignment: state.alignment
+        alignment: state.alignment,
+        background: state.background
       };
       return {
         ...state,
         videos: state.videos.concat(video)
+      };
+    case SET_BACKGROUND:
+      return {...state, background: payload};
+    case ADD_BACKGROUND:
+      return {
+        ...state,
+        backgrounds: [payload, state.backgrounds]
       };
     default:
       return defaultVideoState
@@ -69,12 +124,24 @@ export const VideoProvider = ({children}) => {
     dispatchVideoAction({type: SET_ACTOR, payload: actor});
   }
 
+  const setVoice = (voice) => {
+    dispatchVideoAction({type: SET_VOICE, payload: voice});
+  }
+
   const setAlignment = (align) => {
     dispatchVideoAction({type: SET_ALIGNMENT, payload: align});
   }
 
   const addVideo = () => {
     dispatchVideoAction({type: ADD_VIDEO});
+  }
+
+  const setBackground = (background) => {
+    dispatchVideoAction({type: SET_BACKGROUND, payload: background});
+  }
+
+  const addBackground = (background) => {
+    dispatchVideoAction({type: ADD_BACKGROUND, payload: background});
   }
 
   const reset = () => {
@@ -86,14 +153,20 @@ export const VideoProvider = ({children}) => {
     description : videoState.description,
     alignment: videoState.alignment,
     actor: videoState.actor,
+    voice: videoState.voice,
     script: videoState.script,
     videos: videoState.videos,
+    background: videoState.background,
+    backgrounds: videoState.backgrounds,
     setTitle: setTitle,
     setDescription: setDescription,
     setScript: setScript,
     setActor: setActor,
+    setVoice: setVoice,
     setAlignment: setAlignment,
     addVideo: addVideo,
+    addBackground: addBackground,
+    setBackground: setBackground,
     reset: reset
   }
 

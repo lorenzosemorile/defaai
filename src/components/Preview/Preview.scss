@@ -1,8 +1,10 @@
 .preview {
   @apply flex flex-col w-1/2;
+  width: 750px;
 
   &__image {
     @apply flex bg-gray-light p-4 rounded-2xl gap-y-4 relative;
+
 
     img {
       @apply w-full;

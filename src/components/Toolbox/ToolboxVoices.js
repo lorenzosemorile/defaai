@@ -1,3 +1,4 @@
+import React from 'react';
 import wave from '../../assets/img/wave.svg';
 import play from '../../assets/img/play.svg';
 import pause from '../../assets/img/pause.svg';
@@ -24,7 +25,7 @@ const defaultVoices = [
   }
 ]
 
-export const ToolboxVoices = () => {
+export const ToolboxVoices = React.memo(() => {
 
   const [activeVoice, setActiveVoice] = useState(defaultVoices[0]);
 
@@ -39,19 +40,18 @@ export const ToolboxVoices = () => {
       })}
     </section>
   )
-}
+});
 
 const Voice = ({voice}) => {
 
+  const playerRef = useRef();
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const videoContext = useContext(VideoContext);
 
   const clickHandle = () => {
     setPlaying((prevPlaying) => !prevPlaying);
   }
-
-  const playerRef = useRef();
-
 
   useEffect(() => {
     if (playing){
@@ -65,20 +65,16 @@ const Voice = ({voice}) => {
     setProgress(progress);
   }
 
-  const videoContext = useContext(VideoContext);
-
   const onVoiceClick = () => {
-    videoContext.setActor(voice);
+    videoContext.setVoice(voice);
   }
 
-  const active = (videoContext.actor.id === voice.id);
-
-
+  const active = (videoContext.voice.id === voice.id);
 
   return (
     <div className={`toolbox__voice${active ? ` active` : ''}`} onClick={onVoiceClick}>
       <button
-        className="button button--play"
+        className={`button button--play ${playing ? 'playing' : 'paused'}`}
         onClick={clickHandle}>
         <img src={playing ? play : pause}/>
       </button>

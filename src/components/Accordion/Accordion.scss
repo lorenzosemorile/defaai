@@ -1,21 +1,39 @@
 .accordion {
-  @apply p-4 -mx-4 rounded divide-y divide-y-reverse divide-gray-light;
+  @apply px-4 py-2 -mx-4 divide-y-2 divide-gray last-of-type:border-none border-b border-gray;
 
   &__content{
     @apply transition-all duration-500 ease-in-out hidden;
   }
 
+  .caret {
+    @apply transition-all duration-500;
+  }
+
   &.opened {
-    @apply divide-none bg-light-blue;
+    @apply divide-none bg-light-blue py-4 rounded-lg;
     .caret {
-      @apply rotate-180;
+      @apply transform rotate-180;
     }
+
+    &__heading{
+      @apply flex justify-between items-center pb-2;
+    }
+
     .accordion__content{
       @apply h-auto block;
     }
   }
 
+  &.opened {
+    @apply border-none;
+  }
+
+
   &__heading{
-    @apply flex justify-between items-center py-2;
+    @apply flex justify-between items-center pb-2;
+  }
+
+  &__title {
+    @apply text-gray font-medium text-base;
   }
 }

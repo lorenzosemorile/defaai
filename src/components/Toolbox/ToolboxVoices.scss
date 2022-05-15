@@ -4,6 +4,7 @@
   .toolbox__voice {
     @apply flex p-2 rounded bg-gray-light w-2/3 gap-x-2 transition-all duration-500 hover:bg-light-blue cursor-pointer;
     @apply items-center justify-center;
+    @apply hover:outline hover:outline-1 outline-blue;
   }
 
   .toolbox__voice.active {
@@ -12,7 +13,7 @@
 
   .button--play {
 
-    @apply text-white bg-blue rounded-full text-sm p-2 text-center inline-flex justify-center items-center ;
+    @apply text-white rounded-full text-sm p-2 text-center inline-flex justify-center items-center ;
     padding: 5px;
     margin: 5px;
     width: 40px;
@@ -21,6 +22,14 @@
       height: 15px;
       width: 15px;
     }
+  }
+
+  .button--play.playing{
+    @apply bg-blue
+  }
+
+  .button--play.paused{
+    @apply bg-gray-dark;
   }
 
 

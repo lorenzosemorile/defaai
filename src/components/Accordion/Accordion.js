@@ -11,8 +11,8 @@ export const Accordion = ({title, children, active}) => {
   };
 
   return (
-    <div className={`accordion${opened && ` opened`}`} onClick={open}>
-      <div className="accordion__heading">
+    <div className={`accordion${opened ? ` opened animate__animated animate__fadeIn` : ''}`} >
+      <div className="accordion__heading" onClick={open}>
         <span className="accordion__title">{title}</span>
         <span className="caret" ><img src={caret} alt="caret"/></span>
       </div>

@@ -31,4 +31,13 @@
   &__button {
     @apply col-end-2 py-4;
   }
+
+  &__message {
+    @apply text-xs font-bold pt-4
+  }
+
+  &__message--success{
+    @apply text-green;
+  }
+
 }

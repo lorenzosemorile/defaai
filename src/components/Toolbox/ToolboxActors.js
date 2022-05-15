@@ -26,7 +26,7 @@ const defaultActors = [
   {
     id : 'actor5',
     label : 'Mike',
-    src : require('../../assets/img/actors/5.jpg'),
+    src : require('../../assets/img/actors/5.png'),
   },
   {
     id : 'actor6',
@@ -68,8 +68,10 @@ export const ToolboxActors = () => {
             key={actor.id}
             className={classes.join(' ')}
             onClick={(e) => actorClickHandler(e, actor) }>
-            <img src={actor.src} alt={actor.label}/>
-            <span className="actor__label">{actor.label}</span>
+            <button>
+              <img src={actor.src} alt={actor.label}/>
+              <span className="actor__label">{actor.label}</span>
+            </button>
           </figure>
         )
       })}

@@ -1,7 +1,18 @@
 .toolbox__background {
+  @apply flex flex-col;
+
   &__container.toolbox--images{
-
     @apply grid grid-cols-3 gap-4;
+  }
 
+  &__upload {
+    @apply flex bg-white rounded items-center justify-items-center justify-center
+  }
+
+  &__image:not(:first-child) {
+    @apply transition-all duration-500 hover:drop-shadow-2xl;
+  }
+  &__image.active {
+    @apply drop-shadow-2xl;
   }
 }

@@ -6,6 +6,7 @@ const defaultVideoContext = {
   alignment: {},
   tags : [],
   voice : {},
+  backgrounds : [],
   background : {},
   actor: {},
   videos: [],
@@ -15,6 +16,7 @@ const defaultVideoContext = {
   setTags: (tag) => {},
   setVoice: (voice) => {},
   setBackground : (background) => {},
+  addBackground: (backround) => {},
   setActor : (actor) => {},
   addVideo: () => {},
   reset: () => {}
