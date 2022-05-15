@@ -11,7 +11,7 @@ const defaultProfileState = {
   fullName: '',
   email: '',
   password: '',
-  isLogged: true,
+  isLogged: false,
   activePlanId : 'team',
   bills: [
     {
