@@ -11,6 +11,9 @@
 
   &__image:not(:first-child) {
     @apply transition-all duration-500 hover:drop-shadow-2xl;
+    img {
+      @apply aspect-video object-cover rounded-lg;
+    }
   }
   &__image.active {
     @apply drop-shadow-2xl;

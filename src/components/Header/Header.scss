@@ -42,10 +42,14 @@
       @apply text-base;
     }
 
+
     .settings__tags {
       @apply  flex justify-start gap-x-2 ;
       .button {
         @apply text-2xs border border-gray text-gray p-0 px-2 transition-all duration-500 hover:bg-light-blue;
+      }
+      .button--tag.selected {
+        @apply bg-light-blue
       }
     }
 

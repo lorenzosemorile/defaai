@@ -9,6 +9,14 @@
     @apply aspect-video;
   }
 
+  &__tags{
+    @apply flex justify-center gap-2 flex-wrap;
+  }
+
+  .button--tag{
+    @apply text-2xs border border-gray text-gray p-0 px-2;
+  }
+
 }
 
 .more-menu {

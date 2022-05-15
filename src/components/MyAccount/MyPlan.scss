@@ -1,12 +1,25 @@
 .myplan {
   @apply flex space-x-8 py-12;
-
-
 }
 
 .plan {
 
-  width: 240px;
+  @screen sm{
+    @apply w-full;
+  }
+
+  @screen md {
+    @apply w-full
+  }
+
+  @screen lg {
+    @apply w-full
+  }
+
+  @screen xl{
+    width: 240px;
+  }
+
   @apply p-6 flex flex-col space-y-4 rounded-lg transition-all duration-500 hover:bg-gray-light cursor-pointer;
 
   &.active {

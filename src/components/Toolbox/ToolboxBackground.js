@@ -22,9 +22,6 @@ const accordions = [
 
 export const ToolboxBackground = () => {
 
-  const videoContext = useContext(VideoContext);
-  const backgrounds = videoContext.backgrounds;
-
   const activeAccordion = accordions[0];
   return (
     <section className="toolbox__background">
@@ -36,7 +33,7 @@ export const ToolboxBackground = () => {
             title={accordion.title}
             active={active}>
             <div className={`toolbox__background__container toolbox--${accordion.id}`}>
-              {(accordion.id === 'images') ? <Backgrounds backgrounds={backgrounds} /> : ''}
+              {(accordion.id === 'images') ? <Backgrounds /> : ''}
             </div>
           </Accordion>
         )
@@ -45,11 +42,26 @@ export const ToolboxBackground = () => {
   )
 }
 
-const Backgrounds = ({backgrounds}) => {
+const Backgrounds = () => {
 
   const uploadRef = useRef();
   const videoContext = useContext(VideoContext);
+  const backgrounds = videoContext.backgrounds;
   const [activeBackground, setActiveBackground] = useState(videoContext.background);
+
+  const onchangeUploadFile = () => {
+    const input = uploadRef.current;
+    if (input.files && input.files[0]) {
+      const background = uploadRef.current;
+      const file = input.files[0]
+      background.src = URL.createObjectURL(file); // set src to blob url
+      videoContext.addBackground({
+        id : Math.random().toString(16).substring(2, 10),
+        label : file.name,
+        src : background.src
+      });
+    }
+  }
 
   const uploadClickHandle = () => {
     uploadRef.current.click();
@@ -67,7 +79,11 @@ const Backgrounds = ({backgrounds}) => {
         <button onClick={uploadClickHandle}>
           <img src={upload} />
         </button>
-        <input ref={uploadRef} type="file" hidden/>
+        <input
+          ref={uploadRef}
+          onChange={onchangeUploadFile}
+          type="file"
+          hidden/>
       </div>
       {backgrounds.map(img => {
         const active = img.id === activeBackground.id;

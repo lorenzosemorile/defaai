@@ -12,6 +12,8 @@ const defaultVideoContext = {
   videos: [],
   setTitle : (title) => {},
   setDescription: (description) => {},
+  addTag: (tag) => {},
+  removeTag: (id) => {},
   setAlignment : () => {},
   setTags: (tag) => {},
   setVoice: (voice) => {},

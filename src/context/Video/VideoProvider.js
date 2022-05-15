@@ -7,7 +7,7 @@ import {
   ADD_VIDEO,
   SET_ALIGNMENT,
   RESET,
-  SET_BACKGROUND, ADD_BACKGROUND, SET_VOICE
+  SET_BACKGROUND, ADD_BACKGROUND, SET_VOICE, ADD_TAG, REMOVE_TAG
 } from "./actions";
 import {useReducer} from 'react';
 
@@ -48,6 +48,7 @@ const defaultVideoState = {
   title : 'Say Hi to my costumer',
   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus justo nisi, ultricies ut turpis eget, bibendum tempor mauris. Curabitur sodales lobortis bibendum.',
   script : 'Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages',
+  tags: [],
   alignment : {},
   actor: {},
   voice: {},
@@ -63,28 +64,45 @@ const VideoReducer = (state, action) => {
   switch (type){
     case SET_TITLE:
       return {...state, title : payload};
+
     case SET_DESCRIPTION:
       return {...state, description: payload};
+
     case SET_SCRIPT:
       return {...state, script: payload};
+
+    case ADD_TAG:
+      return {
+        ...state,
+        tags: [...state.tags, payload]
+      };
+
+    case REMOVE_TAG:
+      const tags = state.tags.filter((tag) => tag.id !== payload);
+      return {...state, tags};
+
     case SET_ACTOR:
       return {...state, actor: payload};
+
     case SET_VOICE:
       return {...state, voice: payload};
+
     case SET_ALIGNMENT:
       return {...state, alignment: payload};
+
     case RESET:
-      console.log('RESET');
       return {
         ...state,
         ...defaultVideoState
       };
+
     case ADD_VIDEO:
       const video = {
         title: state.title,
         description: state.description,
         actor: state.actor,
         script: state.script,
+        tags: state.tags,
         alignment: state.alignment,
         background: state.background
       };
@@ -92,13 +110,16 @@ const VideoReducer = (state, action) => {
         ...state,
         videos: state.videos.concat(video)
       };
+
     case SET_BACKGROUND:
       return {...state, background: payload};
+
     case ADD_BACKGROUND:
       return {
         ...state,
-        backgrounds: [payload, state.backgrounds]
+        backgrounds: [payload, ...state.backgrounds]
       };
+
     default:
       return defaultVideoState
   }
@@ -118,6 +139,14 @@ export const VideoProvider = ({children}) => {
 
   const setScript = (script) => {
     dispatchVideoAction({type: SET_SCRIPT, payload: script});
+  }
+
+  const addTag = (tag) => {
+    dispatchVideoAction({type: ADD_TAG, payload: tag});
+  }
+
+  const removeTag = (id) => {
+    dispatchVideoAction({type: REMOVE_TAG, payload: id});
   }
 
   const setActor = (actor) => {
@@ -151,15 +180,18 @@ export const VideoProvider = ({children}) => {
   const videoCtx = {
     title : videoState.title,
     description : videoState.description,
+    script: videoState.script,
+    tags: videoState.tags,
     alignment: videoState.alignment,
     actor: videoState.actor,
     voice: videoState.voice,
-    script: videoState.script,
     videos: videoState.videos,
     background: videoState.background,
     backgrounds: videoState.backgrounds,
     setTitle: setTitle,
     setDescription: setDescription,
+    addTag: addTag,
+    removeTag: removeTag,
     setScript: setScript,
     setActor: setActor,
     setVoice: setVoice,

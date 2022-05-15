@@ -20,7 +20,17 @@ export const VideoCard = ({data}) => {
       <MoreMenu />
       <img className="video-card__image" src={data.actor.src} alt={data.actor.label}/>
       <span className="video-card__title">{data.title}</span>
-      <div className="video-card__tags"></div>
+      <div className="video-card__tags">
+        {data.tags.map(tag => {
+          return (
+            <button
+              key={tag.id}
+              className={`button button--tag`}>
+              {tag.label}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

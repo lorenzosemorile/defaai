@@ -9,6 +9,14 @@
     @apply transition-all duration-500;
   }
 
+  &__heading{
+    @apply flex justify-between items-center pb-2;
+  }
+
+  &__title {
+    @apply text-gray font-medium text-base;
+  }
+
   &.opened {
     @apply divide-none bg-light-blue py-4 rounded-lg;
     .caret {
@@ -17,6 +25,10 @@
 
     &__heading{
       @apply flex justify-between items-center pb-2;
+    }
+
+    .accordion__title {
+      @apply text-blue;
     }
 
     .accordion__content{
@@ -29,11 +41,5 @@
   }
 
 
-  &__heading{
-    @apply flex justify-between items-center pb-2;
-  }
 
-  &__title {
-    @apply text-gray font-medium text-base;
-  }
 }

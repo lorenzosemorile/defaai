@@ -4,6 +4,7 @@
 
 @layer base {
   body {
-    @apply text-base font-sans;
+    @apply flex flex-col min-h-screen text-base font-sans;
   }
+
 }

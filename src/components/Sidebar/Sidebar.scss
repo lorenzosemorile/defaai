@@ -45,7 +45,7 @@
   }
 
   &__icon--avatar img {
-    @apply object-contain rounded-full;
+    @apply object-cover rounded-full;
     width: 60px;
     height: 60px;
   }

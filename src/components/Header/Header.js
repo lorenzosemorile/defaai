@@ -20,15 +20,15 @@ const defaultTags = [
     label : 'Greeting'
   },
   {
-    id : 'email',
+    id : 'email2',
     label : 'Email'
   },
   {
-    id : 'marketing',
+    id : 'marketing2',
     label : 'Marketing'
   },
   {
-    id : 'greeting',
+    id : 'greeting3',
     label : 'Greeting'
   },
 ]
@@ -56,17 +56,31 @@ export const Header = () => {
     videoContext.reset();
   }
 
+  const tagClickHandle = (tag) => {
+    if (videoContext.tags.some(t => tag.id == t.id)){
+      videoContext.removeTag(tag.id);
+      return;
+    }
+    videoContext.addTag(tag);
+  }
+
   const renderSettingsForm = () => {
     if (!filling) return;
     return (
       <div className="settings">
-        <textarea ref={textareaRef} rows="2" defaultValue={videoContext.description} />
+        <textarea
+          ref={textareaRef}
+          rows="2"
+          defaultValue={videoContext.description}
+        />
         <div className="settings__tags">
           {defaultTags.map(tag => {
+            const selected = videoContext.tags.some((selectedTag) => tag.id === selectedTag.id);
             return (
               <button
+                onClick={() => tagClickHandle(tag)}
                 key={tag.id}
-                className="button button--tag">
+                className={`button button--tag ${selected ? 'selected' : ''}`}>
                 {tag.label}
               </button>
             )
