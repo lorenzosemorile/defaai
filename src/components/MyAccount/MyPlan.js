@@ -1,6 +1,7 @@
 import './MyPlan.scss';
 import check from '../../assets/img/check.svg';
-import {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 const plans = [
   {
@@ -59,7 +60,13 @@ const plans = [
 
 export const MyPlan = () => {
 
-  const [activePlan, setActivePlan] = useState(plans[2]);
+
+  const profileContext = useContext(ProfileContext);
+  const [activePlan, setActivePlan] = useState(() => {
+    return plans.find(plan => plan.id === profileContext.activePlanId)
+  });
+
+
 
   return (
     <section className="myplan">
@@ -71,6 +78,7 @@ export const MyPlan = () => {
         }
         return (
           <Plan
+            onPlanSelected={setActivePlan}
             key={plan.id}
             data={plan}
             active={active}
@@ -82,14 +90,29 @@ export const MyPlan = () => {
   )
 }
 
-export const Plan = ({data, active, label}) => {
+export const Plan = React.memo( ({data, active, label, onPlanSelected}) => {
+
+  const profileContext = useContext(ProfileContext);
+
+  const selectPlan = () => {
+    profileContext.setActivePlanId(data.id);
+    const bill = {
+      id : Math.random().toString(16).substring(2, 10),
+      date : Date.now(),
+      amount : data.price
+    };
+    console.log(bill);
+    profileContext.addBill(bill);
+    onPlanSelected(data);
+  }
 
   const renderButton = () => {
     if (active){
       return <button className="button button--plan button--plan--active" disabled={true}>{label}</button>;
     }
-    return <button className="button button--plan">{label}</button>;
+    return <button className="button button--plan" onClick={selectPlan}>{label}</button>;
   }
+
   return (
     <div className={`plan${active ? ` active` : ''}`}>
       <h3>{data.title}</h3>
@@ -104,4 +127,4 @@ export const Plan = ({data, active, label}) => {
     </div>
   )
 
-}
+});

@@ -7,9 +7,13 @@ const defaultProfileContext = {
   image: '',
   isLogged: false,
   password: '',
+  activePlanId: 'team',
+  bills : [],
+  addBill : (bill) => {},
   setInformation : (information) => {},
   setImage: (image) => {},
-  setLogged: (logged) => {}
+  setLogged: (logged) => {},
+  setActivePlanId: (id) => {}
 }
 export const ProfileContext = createContext(defaultProfileContext);
 

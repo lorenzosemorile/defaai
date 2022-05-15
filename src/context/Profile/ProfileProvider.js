@@ -1,7 +1,7 @@
 import {ProfileContext} from "./ProfileContext";
 import {
   SET_INFORMATION,
-  SET_IMAGE, SET_LOGGED
+  SET_IMAGE, SET_LOGGED, SET_PLAN, ADD_BILL
 } from "./actions";
 import {useReducer} from 'react';
 
@@ -11,7 +11,15 @@ const defaultProfileState = {
   fullName: '',
   email: '',
   password: '',
-  isLogged: false,
+  isLogged: true,
+  activePlanId : 'team',
+  bills: [
+    {
+      id : 'a9a6eb99a6e1f',
+      date : 1608888600000,
+      amount : 28
+    }
+  ],
   image : require('../../assets/img/avatar.jpg')
 };
 
@@ -21,13 +29,15 @@ const ProfileReducer = (state, action) => {
   const {type, payload} = action;
   switch (type){
     case SET_INFORMATION:
-      const p = {...state, ...payload}
-      console.log(p);
-      return p;
+      return {...state, ...payload};
     case SET_IMAGE:
       return {...state, image: payload};
     case SET_LOGGED:
       return {...state, isLogged: payload};
+    case SET_PLAN:
+      return {...state, activePlanId: payload};
+    case ADD_BILL:
+      return {...state, bills: state.bills.concat(payload)}
     default:
       return defaultProfileState
   }
@@ -49,6 +59,13 @@ export const ProfileProvider = ({children}) => {
     dispatchProfileAction({type: SET_IMAGE, payload: image});
   };
 
+  const setActivePlanId = (id) => {
+    dispatchProfileAction({type: SET_PLAN, payload: id});
+  };
+
+  const addBill = (bill) => {
+    dispatchProfileAction({type: ADD_BILL, payload: bill});
+  };
 
   const profileCtx = {
     firstName : profileState.firstName,
@@ -58,6 +75,10 @@ export const ProfileProvider = ({children}) => {
     image : profileState.image,
     password: profileState.password,
     isLogged: profileState.isLogged,
+    activePlanId: profileState.activePlanId,
+    bills: profileState.bills,
+    addBill: addBill,
+    setActivePlanId : setActivePlanId,
     setInformation: setInformation,
     setLogged : setLogged,
     setImage: setImage
@@ -69,10 +90,3 @@ export const ProfileProvider = ({children}) => {
     </ProfileContext.Provider>
   )
 }
-
-export const checkLogin = (data, profileContext) => {
-
-  console.log(data);
-
-
-};

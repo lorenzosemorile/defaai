@@ -76,16 +76,16 @@ const Voice = ({voice}) => {
 
 
   return (
-    <div className={`toolbox__voice${active && ` active` || ''}`} onClick={onVoiceClick}>
+    <div className={`toolbox__voice${active ? ` active` : ''}`} onClick={onVoiceClick}>
       <button
         className="button button--play"
         onClick={clickHandle}>
-        <img src={playing && play || pause}/>
+        <img src={playing ? play : pause}/>
       </button>
       <div className="sample">
         <span className="sample__title">{voice.label}</span>
         <img className="sample__image" src={wave} alt="wave" />
-        <span className="sample__percentage">{(progress > 0) && `${progress}%` || ''}</span>
+        <span className="sample__percentage">{(progress > 0) ? `${progress}%` : ''}</span>
         <Player
           ref={playerRef}
           getProgress={onProgressHandle}

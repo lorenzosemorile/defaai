@@ -30,7 +30,7 @@ export const ToolboxAlignment = () => {
         const active = (videoContext.alignment.id === align.id)
         return (
           <button
-            className={`button button--alignment${active && ' active' || ''}`}
+            className={`button button--alignment${active ? ' active' : ''}`}
             onClick={(e) => onClick(e, align)}>
             {align.label}
           </button>

@@ -40,7 +40,7 @@ export const Preview = () => {
             onChange={onChangeHandle}>
           </textarea>
         <button className="button button--listen absolute bottom-4 left-4">Listen</button>
-        <span className="preview__counter">{chars} {chars > 1 && 'chars' || 'char'}</span>
+        <span className="preview__counter">{chars} {chars > 1 ? 'chars' : 'char'}</span>
       </div>
     </section>
   )
