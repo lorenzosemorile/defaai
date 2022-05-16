@@ -1,5 +1,5 @@
 .toolbox__voices {
-  @apply flex flex-col gap-y-4 ;
+  @apply flex flex-col gap-y-4 w-fit;
 
   .toolbox__voice {
     @apply flex p-2 rounded bg-gray-light gap-x-2 transition-all duration-500 hover:bg-light-blue cursor-pointer;
