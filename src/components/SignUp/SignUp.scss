@@ -22,6 +22,14 @@
     }
   }
 
+  &__strength--orange{
+    @apply text-orange;
+  }
+
+  &__strength--green{
+    @apply text-green;
+  }
+
   &__button {
     @apply py-4;
   }

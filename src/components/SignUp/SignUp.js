@@ -1,14 +1,30 @@
 import {Link, useNavigate} from "react-router-dom";
 import './SignUp.scss';
 import logo from "../../assets/img/bg-logo.svg";
-import {useContext, useRef} from "react";
+import {useContext, useRef, useState} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 export const SignUp = () => {
 
   const formRef = useRef();
+  const passwordRef = useRef();
+  const [strength, setStrength] = useState(null);
   const profileContext = useContext(ProfileContext);
   const navigate = useNavigate();
+
+  const checkPassword = () => {
+    const value = passwordRef.current.value;
+    const strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+    const mediumRegex = new RegExp("^(?=.{4,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+    let response;
+    if (strongRegex.test(value)) {
+      response = {'class' : 'green', 'message': 'Strong!' };
+    } else if (mediumRegex.test(value)) {
+      response = {'class' : 'orange', 'message': 'Medium' };
+    }
+    setStrength(response);
+
+  }
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -31,6 +47,13 @@ export const SignUp = () => {
 
   }
 
+  const renderStrength = () => {
+    if (!strength) return;
+    return (
+      <span className={`signup__strength--${strength.class}`}>{strength.message}</span>
+    )
+  }
+
   return (
     <section className="signup">
       <form ref={formRef} className="signup__form" onSubmit={submitHandle}>
@@ -45,9 +68,9 @@ export const SignUp = () => {
         <div className="signup__input">
           <div className="flex justify-between">
             <label htmlFor="email">New Password</label>
-            <span className="text-green">Strong</span>
+            {renderStrength()}
           </div>
-          <input id="password" type="password" name="password"/>
+          <input ref={passwordRef} id="password" type="password" name="password" onInput={checkPassword}/>
         </div>
         <div className="signup__button">
           <button type="submit" className="button button--save">Signup</button>
