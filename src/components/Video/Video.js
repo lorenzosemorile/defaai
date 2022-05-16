@@ -15,10 +15,26 @@ export const VideoList = () => {
 }
 
 export const VideoCard = ({data}) => {
+
+
+  const setTranslate = () => {
+    const {alignment} = data;
+    if (alignment.id === 'center') return '';
+    if (alignment.id === 'left') return 'translate(-20%)';
+    if (alignment.id === 'right') return 'translate(20%)';
+  }
+
   return (
     <div className="video-card">
       <MoreMenu />
-      <img className="video-card__image" src={data.actor.src} alt={data.actor.label}/>
+      <figure className="overflow-hidden" style={{
+        background: `url(${data.background.src})`,
+        backgroundSize: 'cover'
+      }}>
+        <img className="video-card__image" src={data.actor.src} alt={data.actor.label} style={{
+          transform: setTranslate()
+        }}/>
+      </figure>
       <span className="video-card__title">{data.title}</span>
       <div className="video-card__tags">
         {data.tags.map(tag => {
