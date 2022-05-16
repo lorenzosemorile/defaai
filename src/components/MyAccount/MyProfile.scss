@@ -1,6 +1,14 @@
 
 .profile {
-  @apply  w-7/12 py-6 space-y-4;
+  @apply py-6 space-y-4;
+
+  @screen sm {
+    @apply w-full;
+  }
+
+  @screen xl {
+    @apply w-7/12;
+  }
 
   &__avatar {
     @apply flex space-x-4 items-center;
@@ -14,7 +22,15 @@
   }
 
   &__form {
-    @apply grid grid-cols-2 text-black;
+    @apply grid text-black;
+
+    @screen sm {
+      @apply grid-cols-1
+    }
+
+    @screen lg {
+      @apply grid-cols-2;
+    }
   }
 
   &__input {

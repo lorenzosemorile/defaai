@@ -39,6 +39,6 @@
   }
 
   &__logo {
-    @apply fixed right-0 top-0;
+    @apply fixed right-0 top-0 -z-10;
   }
 }
