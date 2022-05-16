@@ -6,6 +6,7 @@ import play from '../../assets/img/play.svg';
 import pause from '../../assets/img/pause.svg';
 import {Player} from "../Player/Player";
 import {VideoContext} from "../../context/Video/VideoContext";
+import {Wave} from "../Wave/Wave";
 
 const defaultVoices = [
   {
@@ -90,7 +91,9 @@ const Voice = ({voice}) => {
       </button>
       <div className="sample">
         <span className="sample__title">{voice.label}</span>
-        <img className="sample__image" src={wave} alt="wave" />
+        <div className="sample__image">
+          <Wave progress={progress} />
+        </div>
         <span className="sample__percentage">{(progress > 0) ? `${progress}%` : ''}</span>
         <Player
           ref={playerRef}
