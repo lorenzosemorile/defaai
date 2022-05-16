@@ -23,7 +23,10 @@ export const Preview = () => {
 
   return (
     <section className="preview">
-      <div className="preview__image">
+      <div className="preview__image" style={{
+        backgroundImage: `url(${videoContext.background.src})`,
+        backgroundSize: `cover`
+      }}>
         <picture>
           <img src={videoContext.actor.src || actor} alt="selected video settings"/>
         </picture>

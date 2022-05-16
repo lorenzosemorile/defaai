@@ -16,12 +16,12 @@ const defaultActors = [
   {
     id : 'actor3',
     label : 'May',
-    src : require('../../assets/img/actors/3.jpg'),
+    src : require('../../assets/img/actors/3.png'),
   },
   {
     id : 'actor4',
     label : 'Peter',
-    src : require('../../assets/img/actors/4.jpg'),
+    src : require('../../assets/img/actors/4.png'),
   },
   {
     id : 'actor5',
@@ -31,12 +31,12 @@ const defaultActors = [
   {
     id : 'actor6',
     label : 'Skey',
-    src : require('../../assets/img/actors/6.jpg'),
+    src : require('../../assets/img/actors/6.png'),
   },
   {
     id : 'actor7',
     label : 'Vincent',
-    src : require('../../assets/img/actors/7.jpg'),
+    src : require('../../assets/img/actors/7.png'),
   }
 ]
 
