@@ -12,10 +12,13 @@
 
   &__image {
     @apply flex gap-y-4 relative;
+    picture {
+      @apply overflow-hidden;
+    }
 
 
     img {
-      @apply w-full;
+      @apply transition-transform duration-500 w-full;
     }
 
     .button--preview{

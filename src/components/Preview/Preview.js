@@ -21,6 +21,13 @@ export const Preview = () => {
     setChars(chars);
   }
 
+  const setTranslate = () => {
+    const {alignment} = videoContext;
+    if (alignment.id === 'center') return '';
+    if (alignment.id === 'left') return 'translate(-20%)';
+    if (alignment.id === 'right') return 'translate(20%)';
+  }
+
   return (
     <section className="preview">
       <div className="preview__image" style={{
@@ -28,7 +35,9 @@ export const Preview = () => {
         backgroundSize: `cover`
       }}>
         <picture>
-          <img src={videoContext.actor.src || actor} alt="selected video settings"/>
+          <img src={videoContext.actor.src || actor} alt="selected video settings" style={{
+            transform: setTranslate()
+          }}/>
         </picture>
         <button className="button button--preview">Preview</button>
       </div>
