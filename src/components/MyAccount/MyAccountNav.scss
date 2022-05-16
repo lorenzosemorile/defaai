@@ -3,7 +3,10 @@
     @apply flex space-x-6;
 
     li {
-      @apply transition-all duration-500 hover:text-blue;
+      @apply transition-all duration-500 text-gray hover:text-blue;
+      button {
+        @apply font-medium
+      }
     }
 
     li.active {

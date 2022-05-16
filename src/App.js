@@ -76,7 +76,7 @@ const Registration = () => {
 const Profile = () => {
   return (
     <Fragment>
-      <HeaderStatic title="My Profile" button="logout"/>
+      <HeaderStatic title="My Account" button="logout"/>
       <main>
         <MyAccount />
       </main>
