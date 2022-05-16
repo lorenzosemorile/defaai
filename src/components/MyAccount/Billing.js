@@ -59,7 +59,11 @@ export const Billing = () => {
               <td>{bill.id}</td>
               <td>{dateToHuman(bill.date)}</td>
               <td>${bill.amount}</td>
-              <td onClick={() => downloadPdf(bill)}><img src={pdf}/></td>
+              <td onClick={() => downloadPdf(bill)}>
+                <button>
+                  <img src={pdf}/>
+                </button>
+              </td>
             </tr>
           )
         })}
