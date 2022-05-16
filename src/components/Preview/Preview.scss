@@ -1,7 +1,14 @@
 .preview {
   @apply flex flex-none flex-col gap-y-4;
   @apply bg-gray-light p-6 rounded-2xl;
-  width: 750px;
+  @screen sm {
+    @apply w-full;
+  }
+
+  @screen lg {
+    width: 750px;
+  }
+
 
   &__image {
     @apply flex gap-y-4 relative;

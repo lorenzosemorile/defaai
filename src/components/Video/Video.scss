@@ -1,5 +1,22 @@
 .video-list {
-  @apply grid grid-cols-5 gap-4;
+  @apply grid gap-4;
+
+  @screen sm {
+    @apply grid-cols-1;
+  }
+
+  @screen md {
+    @apply grid-cols-2;
+  }
+
+  @screen lg {
+    @apply grid-cols-4
+  }
+
+  @screen xl {
+    @apply grid-cols-5
+  }
+
 }
 
 .video-card {

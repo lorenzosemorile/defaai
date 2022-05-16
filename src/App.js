@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <Fragment>
       <Header/>
-      <main className="flex gap-x-8">
+      <main className="video__settings__container">
         <Preview />
         <Toolbox />
       </main>

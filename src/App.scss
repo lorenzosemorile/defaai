@@ -40,5 +40,18 @@ input {
 }
 
 main {
-  @apply py-6
+  @apply py-6;
+
+}
+
+main.video__settings__container{
+
+  @apply flex gap-x-8;
+  @screen sm {
+    @apply flex-col;
+  }
+
+  @screen xl {
+    @apply flex-row;
+  }
 }
