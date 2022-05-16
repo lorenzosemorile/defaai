@@ -5,7 +5,10 @@
   }
 
   @screen lg {
-     @apply flex-row space-x-8;
+     @apply flex-row space-x-8 space-y-0;
+    .plan.active{
+      @apply -mt-8;
+    }
   }
 
 }
@@ -24,10 +27,6 @@
 
   &.active {
     @apply bg-green text-white;
-
-    @screen lg {
-      @apply -mt-8
-    }
 
     h3 {
       @apply text-white;
