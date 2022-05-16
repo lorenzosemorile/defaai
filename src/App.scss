@@ -23,7 +23,11 @@ input {
   }
 
   &--plan {
-    @apply bg-light-blue text-blue text-sm font-bold;
+    @apply bg-light-blue text-blue text-lg font-semibold py-3;
+  }
+
+  &--plan--active {
+    @apply bg-opacity-0 text-green-dark text-xl-plus p-0;
   }
 
   &--preview {
@@ -34,9 +38,7 @@ input {
     @apply text-red text-sm;
   }
 
-  &--plan--active {
-    @apply bg-opacity-0 text-green-dark;
-  }
+
 }
 
 main {

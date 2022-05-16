@@ -37,7 +37,9 @@ module.exports = {
       base: ['15px', '22px'],
       lg: ['16px', '24px'],
       xl: ['18px', '26px'],
-      '2xl': ['22px', '33px']
+      'xl-plus' : ['20px', '30px'],
+      '2xl': ['22px', '33px'],
+      '3xl': ['30px', '45px']
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
