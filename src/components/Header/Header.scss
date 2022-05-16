@@ -9,13 +9,11 @@
   }
 
   &__input {
-    @apply flex w-2/5 font-bold text-2xl gap-x-4;
+    @apply flex w-2/5 font-medium text-2xl gap-x-4;
   }
 
-
-
   &__input__text{
-    @apply  focus:outline-none focus:border-b-2 focus:border-b-gray-light z-10 font-medium text-2xl;
+    @apply  focus:outline-none focus:border-b-2 focus:border-b-gray-light z-10 font-medium text-2xl pl-0;
   }
 
   &__input.filling &__input__text{

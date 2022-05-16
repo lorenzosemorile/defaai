@@ -99,7 +99,7 @@ export const Header = () => {
         <div className="z-10 relative">
           <input
             ref={inputRef}
-            className="header__input__text"
+            className="header__input__text pl-0"
             defaultValue={videoContext.title}
             onFocus={() => setFilling(true)}
           />
