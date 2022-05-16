@@ -1,9 +1,8 @@
+import {useContext, useRef, useState} from "react";
 import './SignIn.scss';
 import {Link, useNavigate} from "react-router-dom";
 import logo from '../../assets/img/bg-logo.svg';
-import {useContext, useRef, useState} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
-import {checkLogin, CheckLogin} from "../../context/Profile/ProfileProvider";
 
 export const SignIn = () => {
 
@@ -13,6 +12,9 @@ export const SignIn = () => {
 
   const [error, setError] = useState(null);
 
+  /*
+    Check email and password for login and response management
+   */
   const checkLogin = (data) => {
     const response = {
       RESP : 'OK',
@@ -34,6 +36,9 @@ export const SignIn = () => {
     return response;
   }
 
+  /*
+    On user submit, manage the response to login or deny the access
+   */
   const submitHandle = (e) => {
     e.preventDefault();
     const form = new FormData(formRef.current);
@@ -80,7 +85,7 @@ export const SignIn = () => {
           <div className="signin__error  animate__animated animate__bounceIn">{error}</div>
         )}
       </form>
-      <div className="signin__logo"><img src={logo}/></div>
+      <div className="signin__logo"><img src={logo} alt="Logo"/></div>
     </section>
   )
 }

@@ -1,10 +1,15 @@
 import {forwardRef} from "react";
 
+/*
+  Player Component with forwardedRef
+ */
 export const Player = forwardRef((props, ref) => {
   const {data, getProgress} = props;
 
+  /*
+    Calculate vision progress and lifting up using callback
+   */
   const onTimeUpdateHandle = () => {
-
     const player = ref.current;
     const duration = player.duration;
     const currentTime = player.currentTime;

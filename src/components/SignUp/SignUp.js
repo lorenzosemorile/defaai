@@ -1,7 +1,7 @@
+import {useContext, useRef, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import './SignUp.scss';
 import logo from "../../assets/img/bg-logo.svg";
-import {useContext, useRef, useState} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 export const SignUp = () => {
@@ -12,6 +12,9 @@ export const SignUp = () => {
   const profileContext = useContext(ProfileContext);
   const navigate = useNavigate();
 
+  /*
+  Check password strengths
+  */
   const checkPassword = () => {
     const value = passwordRef.current.value;
     const strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
@@ -26,6 +29,10 @@ export const SignUp = () => {
 
   }
 
+  /*
+    On user submit save the registration
+    and manage the response with feedback to the view
+   */
   const submitHandle = (e) => {
     e.preventDefault();
     const form = new FormData(formRef.current);
@@ -42,8 +49,6 @@ export const SignUp = () => {
       //formRef.current.classList.remove('animate__animated', 'animate__shakeX');
       navigate('/login');
     });
-
-
 
   }
 
@@ -77,7 +82,7 @@ export const SignUp = () => {
         </div>
         <div className="signup__signup">Already user? <Link to='/login'>Login</Link></div>
       </form>
-      <div className="signup__logo"><img src={logo}/></div>
+      <div className="signup__logo"><img src={logo} alt="Logo"/></div>
     </section>
   )
 }

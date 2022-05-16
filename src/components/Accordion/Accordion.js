@@ -1,8 +1,8 @@
-import caret from "../../assets/img/caret.svg";
+import {useState} from "react";
 import './Accordion.scss';
-import {useEffect, useState} from "react";
+import caret from "../../assets/img/caret.svg";
 
-export const Accordion = ({title, children, active}) => {
+export const Accordion = ({title, active, children}) => {
 
   const [opened, setOpened] = useState(active);
 

@@ -1,5 +1,5 @@
-import './ToolboxBackground.scss';
 import {Fragment, useContext, useRef, useState} from "react";
+import './ToolboxBackground.scss';
 import {Accordion} from "../Accordion/Accordion";
 import upload from '../../assets/img/upload.svg';
 import {VideoContext} from "../../context/Video/VideoContext";
@@ -18,7 +18,6 @@ const accordions = [
     title : 'Videos'
   }
 ]
-
 
 export const ToolboxBackground = () => {
 
@@ -77,7 +76,7 @@ const Backgrounds = () => {
     <Fragment>
       <div className="toolbox__background__image toolbox__background__upload">
         <button onClick={uploadClickHandle}>
-          <img src={upload} />
+          <img src={upload} alt="upload icon"/>
         </button>
         <input
           ref={uploadRef}

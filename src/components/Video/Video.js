@@ -2,7 +2,11 @@ import {useContext} from "react";
 import {VideoContext} from "../../context/Video/VideoContext";
 import more from '../../assets/img/more.svg';
 import './Video.scss';
+import {setAlignTranslate} from "../../Utilities/setAlignTranslate";
 
+/*
+ Video section component
+ */
 export const VideoList = () => {
 
   const videoContext = useContext(VideoContext);
@@ -14,15 +18,10 @@ export const VideoList = () => {
   )
 }
 
+/*
+Single video card component
+ */
 export const VideoCard = ({data}) => {
-
-
-  const setTranslate = () => {
-    const {alignment} = data;
-    if (alignment.id === 'center') return '';
-    if (alignment.id === 'left') return 'translate(-20%)';
-    if (alignment.id === 'right') return 'translate(20%)';
-  }
 
   return (
     <div className="video-card">
@@ -32,7 +31,7 @@ export const VideoCard = ({data}) => {
         backgroundSize: 'cover'
       }}>
         <img className="video-card__image" src={data.actor.src} alt={data.actor.label} style={{
-          transform: setTranslate()
+          transform: setAlignTranslate(data.alignment)
         }}/>
       </figure>
       <span className="video-card__title">{data.title}</span>
@@ -51,6 +50,9 @@ export const VideoCard = ({data}) => {
   )
 }
 
+/*
+  Contextual menu
+ */
 export const MoreMenu = ({id}) => {
   return (
     <div className="more-menu">

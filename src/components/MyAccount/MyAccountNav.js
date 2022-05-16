@@ -1,5 +1,6 @@
-import './MyAccountNav.scss';
 import {useEffect, useState} from "react";
+import './MyAccountNav.scss';
+
 const nav = [
   {
     id : 'myprofile',

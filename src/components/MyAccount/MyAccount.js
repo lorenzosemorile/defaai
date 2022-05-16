@@ -1,5 +1,5 @@
-import {MyAccountNav} from "./MyAccountNav";
 import {Fragment, useState} from "react";
+import {MyAccountNav} from "./MyAccountNav";
 import {MyProfile} from "./MyProfile";
 import {MyPlan} from "./MyPlan";
 import {Billing} from "./Billing";

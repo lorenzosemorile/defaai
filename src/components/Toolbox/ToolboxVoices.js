@@ -1,12 +1,12 @@
 import React from 'react';
+import {useContext, useEffect, useRef, useState} from "react";
+import './ToolboxVoices.scss';
 import wave from '../../assets/img/wave.svg';
 import play from '../../assets/img/play.svg';
 import pause from '../../assets/img/pause.svg';
-
-import './ToolboxVoices.scss';
 import {Player} from "../Player/Player";
-import {useContext, useEffect, useRef, useState} from "react";
 import {VideoContext} from "../../context/Video/VideoContext";
+
 const defaultVoices = [
   {
     id : 'asian',
@@ -26,8 +26,6 @@ const defaultVoices = [
 ]
 
 export const ToolboxVoices = React.memo(() => {
-
-  const [activeVoice, setActiveVoice] = useState(defaultVoices[0]);
 
   return (
     <section className="toolbox__voices">
@@ -49,10 +47,16 @@ const Voice = ({voice}) => {
   const [progress, setProgress] = useState(0);
   const videoContext = useContext(VideoContext);
 
+  /*
+    On button click toogle playing state
+  */
   const clickHandle = () => {
     setPlaying((prevPlaying) => !prevPlaying);
   }
 
+  /*
+    On playing state start to play or pause the player
+   */
   useEffect(() => {
     if (playing){
       playerRef.current.play();
@@ -61,10 +65,16 @@ const Voice = ({voice}) => {
     }
   }, [playing])
 
+  /*
+    Manage played progress in a state
+   */
   const onProgressHandle = (progress) => {
     setProgress(progress);
   }
 
+  /*
+    Save selected voice in a context
+   */
   const onVoiceClick = () => {
     videoContext.setVoice(voice);
   }
@@ -76,7 +86,7 @@ const Voice = ({voice}) => {
       <button
         className={`button button--play ${playing ? 'playing' : 'paused'}`}
         onClick={clickHandle}>
-        <img src={playing ? play : pause}/>
+        <img src={playing ? play : pause} alt="plaing icon"/>
       </button>
       <div className="sample">
         <span className="sample__title">{voice.label}</span>

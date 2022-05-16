@@ -1,36 +1,19 @@
 import logo from '../../assets/img/logo.svg';
 import cam from '../../assets/img/cam.svg';
 import allvideo from '../../assets/img/allvideo.svg';
-import avatar from '../../assets/img/avatar.jpg';
 import './Sidebar.scss';
 import { Link, useLocation } from "react-router-dom";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
-
-const navigation = [
-  {
-    id : 'home',
-    url: '/'
-  },
-  {
-    id : 'myvideos',
-    url : '/myvideos'
-  },
-  {
-    id : 'login',
-    url : '/login'
-  },
-  {
-    id : 'profile',
-    url : '/profile'
-  }
-]
 
 export const Sidebar = () => {
 
   const location = useLocation();
   const profileContext = useContext(ProfileContext);
 
+  /*
+    Set current active icon based on url
+   */
   const checkActive = (url) => {
     if (location.pathname === url){
       return ' sidebar__icon--active';

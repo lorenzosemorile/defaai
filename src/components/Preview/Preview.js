@@ -1,6 +1,7 @@
-import actor from '../../assets/img/actors/1.png';
+import {useContext, useRef, useState} from "react";
 import './Preview.scss';
-import {useContext, useEffect, useRef, useState} from "react";
+import actor from '../../assets/img/actors/1.png';
+import {setAlignTranslate} from "../../Utilities/setAlignTranslate";
 import {VideoContext} from "../../context/Video/VideoContext";
 import {defaultScriptText} from "../../context/Video/VideoProvider";
 
@@ -10,22 +11,20 @@ export const Preview = () => {
   const [chars, setChars] = useState(0);
   const videoContext = useContext(VideoContext);
 
-
+  /*
+    Set script on textarea value change
+   */
   const onChangeHandle = (e) => {
     const script = e.target.value;
     videoContext.setScript(script);
   }
 
+  /*
+    Manage chars number written in a script textarea
+   */
   const onKeyDownHandle = ()=> {
     const chars = scriptTextRef.current.value.length;
     setChars(chars);
-  }
-
-  const setTranslate = () => {
-    const {alignment} = videoContext;
-    if (alignment.id === 'center') return '';
-    if (alignment.id === 'left') return 'translate(-20%)';
-    if (alignment.id === 'right') return 'translate(20%)';
   }
 
   return (
@@ -36,7 +35,7 @@ export const Preview = () => {
       }}>
         <picture>
           <img src={videoContext.actor.src || actor} alt="selected video settings" style={{
-            transform: setTranslate()
+            transform: setAlignTranslate(videoContext.alignment)
           }}/>
         </picture>
         <button className="button button--preview">Preview</button>

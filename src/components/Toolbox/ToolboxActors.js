@@ -1,8 +1,8 @@
 import './ToolboxActors.scss';
-import {useContext, useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import {VideoContext} from "../../context/Video/VideoContext";
 
-const defaultActors = [
+const actors = [
   {
     id : 'actor1',
     label : 'YoYo',
@@ -42,19 +42,15 @@ const defaultActors = [
 
 export const ToolboxActors = () => {
 
-  const [actors, ] = useState(defaultActors);
   const videoContext = useContext(VideoContext);
-  const defaultActor = videoContext.actor || defaultActors[0]
+  const defaultActor = videoContext.actor || actors[0];
   const [activeActor, setActiveActor] = useState(defaultActor);
 
+  /* Save selected actor in a video context */
   const actorClickHandler = (e, actor) => {
+    videoContext.setActor(activeActor);
     setActiveActor(actor);
   }
-
-  useEffect(() => {
-    videoContext.setActor(activeActor);
-  }, [activeActor])
-
 
   return (
     <div className="toolbox__actors">

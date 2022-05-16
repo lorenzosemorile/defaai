@@ -61,7 +61,7 @@ export const Billing = () => {
               <td>${bill.amount}</td>
               <td onClick={() => downloadPdf(bill)}>
                 <button>
-                  <img src={pdf}/>
+                  <img src={pdf} alt="PDF Icon"/>
                 </button>
               </td>
             </tr>

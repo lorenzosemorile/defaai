@@ -1,24 +1,21 @@
+import {Fragment, useContext} from "react";
+import {Routes, Route, useLocation} from 'react-router-dom';
 import {Header, HeaderStatic} from './components/Header/Header';
 import {Sidebar} from './components/Sidebar/Sidebar';
-import {
-  BrowserRouter,
-  Routes,
-  Route, useNavigate, useLocation,
-} from 'react-router-dom';
-import './App.scss';
-import 'animate.css';
-import {Fragment, useContext} from "react";
 import {VideoProvider} from "./context/Video/VideoProvider";
 import {VideoList} from "./components/Video/Video";
 import {SignIn} from "./components/SignIn/SignIn";
 import {SignUp} from "./components/SignUp/SignUp";
 import {MyAccount} from "./components/MyAccount/MyAccount";
-import {ProfileContext} from "./context/Profile/ProfileContext";
-import {ProfileProvider} from "./context/Profile/ProfileProvider";
 import {Preview} from "./components/Preview/Preview";
 import {Toolbox} from "./components/Toolbox/Toolbox";
+import {ProfileContext} from "./context/Profile/ProfileContext";
+import './App.scss';
+import 'animate.css';
 
-
+/*
+  Homepage
+ */
 const Home = () => {
   return (
     <Fragment>
@@ -31,10 +28,13 @@ const Home = () => {
   )
 }
 
+/*
+  My Video Section
+*/
 const MyVideos = () => {
   return (
     <Fragment>
-      <HeaderStatic title="Saved Videos" button={'newvideo'} />
+      <HeaderStatic title="Saved Videos" button="newvideo" />
       <main>
         <VideoList />
       </main>
@@ -42,6 +42,9 @@ const MyVideos = () => {
   )
 }
 
+/*
+  Login Page
+ */
 const Login = () => {
   return (
     <Fragment>
@@ -53,10 +56,13 @@ const Login = () => {
   )
 }
 
+/*
+  Registration Page
+ */
 const Registration = () => {
   return (
     <Fragment>
-      <HeaderStatic title="Create an account" button={'logout'} />
+      <HeaderStatic title="Create an account" button="logout" />
       <main>
         <SignUp />
       </main>
@@ -64,10 +70,13 @@ const Registration = () => {
   )
 }
 
+/*
+  Profile section
+ */
 const Profile = () => {
   return (
     <Fragment>
-      <HeaderStatic title="My Profile" button={'logout'}/>
+      <HeaderStatic title="My Profile" button="logout"/>
       <main>
         <MyAccount />
       </main>
@@ -80,7 +89,10 @@ const Profile = () => {
 const App = () => {
   const profileContext = useContext(ProfileContext);
   const location = useLocation();
+
+  /* Check if User is logged in */
   if (!profileContext.isLogged){
+    /* Leave Signup Page accessible */
     if (location.pathname !== '/signup'){
       return (
         <Fragment>

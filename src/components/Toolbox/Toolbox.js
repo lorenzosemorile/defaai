@@ -24,6 +24,9 @@ const navItems = [
   }
 ]
 
+/*
+  Render different tool based on active navigation tab
+ */
 const renderTool = (active) => {
   switch (active){
     case 'actor':

@@ -1,9 +1,9 @@
-import caret from '../../assets/img/caret.svg';
-import './Header.scss';
-import {Overlay} from "../Overlay/Overlay";
-import {useContext, useEffect, useRef, useState} from "react";
-import {VideoContext} from "../../context/Video/VideoContext";
+import {useContext, useRef, useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import './Header.scss';
+import caret from '../../assets/img/caret.svg';
+import {Overlay} from "../Overlay/Overlay";
+import {VideoContext} from "../../context/Video/VideoContext";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 const defaultTags = [
@@ -36,10 +36,10 @@ const defaultTags = [
 export const Header = () => {
 
   const [filling, setFilling] = useState(false);
-  const videoContext = useContext(VideoContext);
-  const navigate = useNavigate();
   const inputRef = useRef();
   const textareaRef = useRef();
+  const videoContext = useContext(VideoContext);
+  const navigate = useNavigate();
 
   const saveInfoHandle = () => {
     videoContext.setTitle(inputRef.current.value);
@@ -57,7 +57,7 @@ export const Header = () => {
   }
 
   const tagClickHandle = (tag) => {
-    if (videoContext.tags.some(t => tag.id == t.id)){
+    if (videoContext.tags.some(t => tag.id === t.id)){
       videoContext.removeTag(tag.id);
       return;
     }
@@ -101,11 +101,14 @@ export const Header = () => {
             ref={inputRef}
             className="header__input__text"
             defaultValue={videoContext.title}
-            onFocus={() => setFilling(true)}/>
+            onFocus={() => setFilling(true)}
+          />
           {renderSettingsForm()}
         </div>
         <Overlay opened={filling} />
-        <span className="caret"><img src={caret} alt="caret" /></span>
+        <span className="caret">
+          <img src={caret} alt="caret" />
+        </span>
       </div>
       <div className="header__actions">
         <button className="button button--cancel" onClick={cancelVideoHandle}>Cancel</button>
@@ -137,11 +140,12 @@ export const HeaderStatic = ({title, button, children}) => {
         return (
           <button className="button button--logout" onClick={logoutClickHandle}>Logout</button>
         )
-
       case 'newvideo':
         return (
           <button className="button button--save" onClick={newClickHandle}>Create New</button>
         )
+      default:
+        return;
     }
   }
 

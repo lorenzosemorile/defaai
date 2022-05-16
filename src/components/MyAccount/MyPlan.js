@@ -1,6 +1,5 @@
+import React, {useContext, useState} from "react";
 import './MyPlan.scss';
-import check from '../../assets/img/check.svg';
-import React, {useContext, useEffect, useState} from "react";
 import {ProfileContext} from "../../context/Profile/ProfileContext";
 
 const plans = [
@@ -60,7 +59,6 @@ const plans = [
 
 export const MyPlan = ({onChangePlan}) => {
 
-
   const profileContext = useContext(ProfileContext);
   const [activePlan, setActivePlan] = useState(() => {
     return plans.find(plan => plan.id === profileContext.activePlanId)
@@ -93,6 +91,9 @@ export const Plan = React.memo( ({data, active, label, onPlanSelected, onChangeP
 
   const profileContext = useContext(ProfileContext);
 
+  /*
+  Select Plan, add bill to profile context and call the callbacks
+   */
   const selectPlan = () => {
     profileContext.setActivePlanId(data.id);
     const bill = {
@@ -100,13 +101,9 @@ export const Plan = React.memo( ({data, active, label, onPlanSelected, onChangeP
       date : Date.now(),
       amount : data.price
     };
-    console.log(bill);
     profileContext.addBill(bill);
     onPlanSelected(data);
     onChangePlan();
-    setTimeout(() => {
-
-    }, 600);
   }
 
   const renderButton = () => {

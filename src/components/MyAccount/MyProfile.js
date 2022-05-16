@@ -99,9 +99,10 @@ export const MyProfile = () => {
           className="profile__avatar__image"
           ref={avatarImageRef}
           src={profileContext.image}
+          alt="avatar"
         />
         <button onClick={uploadAvatarHandle}>
-          <img src={pen} />
+          <img src={pen} alt="pen"/>
         </button>
         <input
           ref={avatarInputRef}
