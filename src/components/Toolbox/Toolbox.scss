@@ -1,5 +1,5 @@
 .toolbox {
-  @apply flex w-1/2 flex-col;
+  @apply flex flex-col;
 
   &__list {
     @apply flex justify-items-start space-x-4 py-5 text-gray;

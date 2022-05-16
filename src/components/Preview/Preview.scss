@@ -1,6 +1,6 @@
 .preview {
-  @apply flex flex-col w-1/2 gap-y-4;
-  @apply bg-gray-light p-4 rounded-2xl;
+  @apply flex flex-none flex-col gap-y-4;
+  @apply bg-gray-light p-6 rounded-2xl;
   width: 750px;
 
   &__image {
