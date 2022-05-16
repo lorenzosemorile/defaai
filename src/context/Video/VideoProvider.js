@@ -91,9 +91,10 @@ const VideoReducer = (state, action) => {
       return {...state, alignment: payload};
 
     case RESET:
+      const resetState = {...defaultVideoState, videos: state.videos};
       return {
         ...state,
-        ...defaultVideoState
+        ...resetState
       };
 
     case ADD_VIDEO:
