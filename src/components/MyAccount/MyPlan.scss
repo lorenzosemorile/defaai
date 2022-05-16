@@ -24,7 +24,17 @@
 
   &.active {
     @apply bg-green text-white -mt-8;
+    h3 {
+      @apply text-white;
+    }
+
+    svg {
+      @apply fill-white;
+    }
+
+
   }
+
 
   h3{
     @apply font-bold text-xl text-black;
@@ -34,7 +44,7 @@
     @apply flex flex-col gap-y-4;
     li {
       @apply flex space-x-5 items-start text-2xs;
-      img {
+      svg {
         @apply mt-2
       }
     }
